@@ -1,0 +1,15 @@
+# Node
+node_modules/
+.env
+
+# Logs
+*.log
+
+# Vite/React
+dist/
+
+# Sequelize
+*.sqlite
+
+# Misc
+.DS_Store
