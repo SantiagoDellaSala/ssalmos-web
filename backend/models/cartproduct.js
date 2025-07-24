@@ -1,26 +1,24 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class CartProduct extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
+  const CartProduct = sequelize.define('CartProduct', {
+    cartId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    productId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    cantidad: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 1
     }
-  }
-  CartProduct.init({
-    cartId: DataTypes.INTEGER,
-    productId: DataTypes.INTEGER,
-    cantidad: DataTypes.INTEGER,
-    precioUnit: DataTypes.DECIMAL
-  }, {
-    sequelize,
-    modelName: 'CartProduct',
-  });
+  }, {});
+
+  CartProduct.associate = function(models) {
+    // no hace falta definir relaciones inversas en este modelo puente
+  };
+
   return CartProduct;
 };
